@@ -1,0 +1,2 @@
+strategy,analysis_period_days,analysis_period_years,total_return,annualized_return,volatility,sharpe_ratio,max_drawdown,win_rate,ibit_contribution_annual,spy_contribution_annual,spy_win_rate,spy_trading_days,spy_avg_daily_return,spy_volatility
+IBIT Overnight + SPY Day Trading,699,1.9137577002053388,2.0545003040014644,0.7922428228159863,0.421475260233422,1.8322376084145526,-0.219136328736409,0.5571725571725572,0.5068653095299125,0.0502851315731323,0.5280665280665281,481,0.00020465965649281835,0.14244785651843128

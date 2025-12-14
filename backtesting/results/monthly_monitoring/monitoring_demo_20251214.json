@@ -1,0 +1,20 @@
+{
+  "demo_date": "2025-12-14T15:47:48.079188",
+  "analysis_period_days": 40,
+  "recent_metrics": {
+    "annual_return": -0.26987315401760337,
+    "sharpe_ratio": -0.800299248325408,
+    "win_rate": 0.425
+  },
+  "baseline_comparison": {
+    "return_diff": -0.9928731540176033,
+    "sharpe_diff": -2.610299248325408,
+    "win_rate_diff": -0.12200000000000005
+  },
+  "performance_flags": [
+    "\ud83d\udd34 MAJOR: Return significantly below baseline",
+    "\ud83d\udd34 MAJOR: Sharpe ratio below 1.0",
+    "\ud83d\udd34 MAJOR: Win rate critically low"
+  ],
+  "trades_analyzed": 40
+}
