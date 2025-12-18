@@ -46,6 +46,17 @@ backtesting/
 │   └── pdf_charts/          # Generated charts for reports
 ├── docs/                     # Documentation
 └── scripts/                  # Utility scripts
+
+live_trading/
+├── config.py                 # Alpaca API configuration
+├── alpaca_client.py          # Alpaca trading client
+├── strategy.py              # Live trading strategy
+├── monitor.py               # Performance monitoring
+├── setup.py                 # Setup validation
+├── requirements.txt         # Live trading dependencies
+├── data/                    # Live trading data
+├── logs/                    # Trading activity logs
+└── results/                 # Live trading results
 ```
 
 ## 🛠️ Installation & Setup
@@ -109,6 +120,39 @@ python main.py report
 # - Detailed performance analysis
 # - Risk metrics and implementation guidance
 ```
+
+## 🔴 Live Paper Trading
+
+The project includes a complete **Alpaca paper trading implementation** for testing the strategy with live market data:
+
+### Quick Start - Live Trading
+```bash
+# Navigate to live trading folder
+cd live_trading
+
+# Install additional dependencies
+pip install -r requirements.txt
+
+# Configure Alpaca credentials in config.py
+# Get free paper trading account: https://alpaca.markets/
+
+# Validate setup
+python setup.py
+
+# Start automated trading
+python strategy.py
+
+# Monitor performance
+python monitor.py
+```
+
+### Live Trading Features
+- ✅ **Automated Execution**: Buy at close, sell at open
+- ✅ **Paper Trading**: No real money, safe testing environment  
+- ✅ **Risk Management**: Position limits, daily loss stops
+- ✅ **Real-time Monitoring**: Live performance tracking
+- ✅ **Professional Logging**: Complete audit trail
+- ✅ **Performance Reports**: Daily charts and metrics
 
 ## 📈 Strategy Performance
 

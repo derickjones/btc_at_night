@@ -1,0 +1,26 @@
+# Alpaca Paper Trading Requirements
+# Install with: pip install -r requirements.txt
+
+# Core Alpaca trading
+alpaca-trade-api>=3.0.0
+
+# Job scheduling  
+schedule>=1.2.0
+
+# Data processing (already included in main project)
+pandas>=1.5.0
+numpy>=1.20.0
+
+# Visualization (already included in main project)
+matplotlib>=3.5.0
+
+# Additional utilities
+python-dateutil>=2.8.0
+pytz>=2022.1
+
+# Optional: Email alerts
+# smtplib (built-in)
+# email (built-in)
+
+# Optional: Advanced monitoring
+# psutil>=5.9.0
