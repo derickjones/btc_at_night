@@ -21,6 +21,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
     
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -38,6 +39,7 @@ jobs:
         git config --local user.name "GitHub Action"
     
     - name: Run trading strategy
+      continue-on-error: false
       env:
         ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
         ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
@@ -51,6 +53,8 @@ jobs:
         # Check what time it is (UTC)
         hour=$(date -u +%H)
         
+        echo "🕐 Current UTC time: $(date -u +'%Y-%m-%d %H:%M:%S')"
+        
         if [ "$hour" = "22" ]; then
           echo "📧 Sending daily email report..."
           python daily_email_report.py
@@ -60,9 +64,19 @@ jobs:
         fi
     
     - name: Commit results
+      continue-on-error: true
       run: |
+        # Configure git with GitHub Actions bot info
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        
+        # Add any new files or changes
         git add live_trading/results/ live_trading/logs/ || true
+        
+        # Only commit if there are changes
         if ! git diff --staged --quiet; then
-          git commit -m "📊 Trading data update - $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git push
+          git commit -m "📊 Trading data update - $(date -u +'%Y-%m-%d %H:%M UTC')" || true
+          git push || echo "Push failed, continuing anyway"
+        else
+          echo "No changes to commit"
         fi
