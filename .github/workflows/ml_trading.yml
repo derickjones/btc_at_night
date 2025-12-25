@@ -1,0 +1,34 @@
+name: ML IBIT Trading
+
+on:
+  schedule:
+    # Buy signal: 3:50 PM EST = 20:50 UTC
+    - cron: '50 20 * * 1-5'
+    # Sell signal: 9:40 AM EST = 14:40 UTC  
+    - cron: '40 14 * * 1-5'
+  workflow_dispatch:  # Allow manual trigger for testing
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r ml_live_trading/requirements.txt
+      
+      - name: Run ML Trading
+        env:
+          ML_ALPACA_API_KEY: ${{ secrets.ML_ALPACA_API_KEY }}
+          ML_ALPACA_SECRET_KEY: ${{ secrets.ML_ALPACA_SECRET_KEY }}
+        run: |
+          cd ml_live_trading
+          python github_trading.py

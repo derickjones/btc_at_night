@@ -1,0 +1,34 @@
+2025-12-25 00:01:52,028 - MLStrategy - INFO - Training new model...
+2025-12-25 00:02:07,782 - MLStrategy - INFO - Training new model...
+2025-12-25 00:02:07,978 - MLStrategy - INFO - Fetching historical data for training...
+2025-12-25 00:02:08,528 - MLStrategy - INFO - Model trained on 469 samples
+2025-12-25 00:02:08,529 - MLStrategy - INFO - Model saved to /Users/derickjones/Documents/VS-Code/btc_at_night/ml_live_trading/models/logistic_regression_model.pkl
+2025-12-25 00:02:08,529 - MLStrategy - INFO - 🚀 ML Overnight Strategy initialized
+2025-12-25 00:02:08,529 - MLStrategy - INFO -    Model type: logistic_regression
+2025-12-25 00:02:08,529 - MLStrategy - INFO -    Buy threshold: 0.5
+2025-12-25 00:02:08,529 - MLStrategy - INFO - 📊 Calculating live features...
+2025-12-25 00:02:08,992 - MLStrategy - WARNING - Could not get today's intraday data, using latest historical
+2025-12-25 00:02:09,000 - MLStrategy - INFO -    Today's gap: 0.00%
+2025-12-25 00:02:09,000 - MLStrategy - INFO -    Intraday return: 0.00%
+2025-12-25 00:02:09,000 - MLStrategy - INFO -    IBIT vs SPY (intraday): -0.35%
+2025-12-25 00:02:09,002 - MLStrategy - INFO - 🤖 ML Prediction:
+2025-12-25 00:02:09,002 - MLStrategy - INFO -    Probability of positive overnight: 41.6%
+2025-12-25 00:02:09,002 - MLStrategy - INFO -    Buy threshold: 50.0%
+2025-12-25 00:02:09,002 - MLStrategy - INFO -    Decision: SKIP ❌
+2025-12-25 00:06:25,092 - MLStrategy - INFO - Loading saved model from /Users/derickjones/Documents/VS-Code/btc_at_night/ml_live_trading/models/logistic_regression_model.pkl
+2025-12-25 00:06:25,094 - MLStrategy - INFO - 🚀 ML Overnight Strategy initialized
+2025-12-25 00:06:25,094 - MLStrategy - INFO -    Model type: logistic_regression
+2025-12-25 00:06:25,094 - MLStrategy - INFO -    Buy threshold: 0.5
+2025-12-25 00:06:25,094 - MLStrategy - INFO - 📊 Calculating live features...
+2025-12-25 00:06:25,830 - MLStrategy - WARNING - Could not get today's intraday data, using latest historical
+2025-12-25 00:06:25,837 - MLStrategy - INFO -    Today's gap: 0.00%
+2025-12-25 00:06:25,837 - MLStrategy - INFO -    Intraday return: 0.00%
+2025-12-25 00:06:25,837 - MLStrategy - INFO -    IBIT vs SPY (intraday): -0.35%
+2025-12-25 00:06:25,839 - MLStrategy - INFO - 🤖 ML Prediction:
+2025-12-25 00:06:25,839 - MLStrategy - INFO -    Probability of positive overnight: 41.6%
+2025-12-25 00:06:25,839 - MLStrategy - INFO -    Buy threshold: 50.0%
+2025-12-25 00:06:25,839 - MLStrategy - INFO -    Decision: SKIP ❌
+2025-12-25 00:06:38,835 - MLStrategy - INFO - Loading saved model from /Users/derickjones/Documents/VS-Code/btc_at_night/ml_live_trading/models/logistic_regression_model.pkl
+2025-12-25 00:06:38,837 - MLStrategy - INFO - 🚀 ML Overnight Strategy initialized
+2025-12-25 00:06:38,837 - MLStrategy - INFO -    Model type: logistic_regression
+2025-12-25 00:06:38,837 - MLStrategy - INFO -    Buy threshold: 0.5

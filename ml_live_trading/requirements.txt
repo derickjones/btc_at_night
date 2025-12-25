@@ -1,0 +1,18 @@
+# ML Live Trading Requirements
+# For IBIT overnight strategy with ML predictions
+
+# Alpaca API
+alpaca-trade-api>=3.0.0
+
+# Data & ML
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+yfinance>=0.2.0
+
+# Optional: XGBoost for alternative model
+xgboost>=2.0.0
+
+# Utilities
+python-dateutil>=2.8.0
+pytz>=2023.3

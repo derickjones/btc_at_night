@@ -1,0 +1,37 @@
+2025-12-25 00:01:23,158 - MLAlpacaTrading - ERROR - ❌ Failed to connect to Alpaca: 404 Client Error: Not Found for url: https://paper-api.alpaca.markets/v2/v2/account
+2025-12-25 00:01:23,195 - MLAlpacaTrading - ERROR - Error getting account info: 404 Client Error: Not Found for url: https://paper-api.alpaca.markets/v2/v2/account
+2025-12-25 00:01:42,245 - MLAlpacaTrading - INFO - ✅ Successfully connected to Alpaca (ML account)
+2025-12-25 00:01:42,246 - MLAlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-25 00:01:42,246 - MLAlpacaTrading - INFO - Buying Power: $20,000.00
+2025-12-25 00:01:42,246 - MLAlpacaTrading - INFO - Portfolio Value: $10,000.00
+2025-12-25 00:01:52,028 - MLAlpacaTrading - INFO - ✅ Successfully connected to Alpaca (ML account)
+2025-12-25 00:01:52,028 - MLAlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-25 00:01:52,028 - MLAlpacaTrading - INFO - Buying Power: $20,000.00
+2025-12-25 00:01:52,028 - MLAlpacaTrading - INFO - Portfolio Value: $10,000.00
+2025-12-25 00:02:07,781 - MLAlpacaTrading - INFO - ✅ Successfully connected to Alpaca (ML account)
+2025-12-25 00:02:07,781 - MLAlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-25 00:02:07,781 - MLAlpacaTrading - INFO - Buying Power: $20,000.00
+2025-12-25 00:02:07,781 - MLAlpacaTrading - INFO - Portfolio Value: $10,000.00
+2025-12-25 00:02:08,948 - MLAlpacaTrading - ERROR - Error getting today's bar: subscription does not permit querying recent SIP data
+2025-12-25 00:02:08,992 - MLAlpacaTrading - ERROR - Error getting today's bar: subscription does not permit querying recent SIP data
+2025-12-25 00:04:40,182 - MLAlpacaTrading - INFO - ✅ Successfully connected to Alpaca (ML account)
+2025-12-25 00:04:40,182 - MLAlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-25 00:04:40,182 - MLAlpacaTrading - INFO - Buying Power: $20,000.00
+2025-12-25 00:04:40,182 - MLAlpacaTrading - INFO - Portfolio Value: $10,000.00
+2025-12-25 00:04:40,397 - MLAlpacaTrading - ERROR - Error getting historical data: subscription does not permit querying recent SIP data
+2025-12-25 00:04:40,439 - MLAlpacaTrading - ERROR - Error getting today's bar: subscription does not permit querying recent SIP data
+2025-12-25 00:05:39,470 - MLAlpacaTrading - INFO - ✅ Successfully connected to Alpaca (ML account)
+2025-12-25 00:05:39,471 - MLAlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-25 00:05:39,471 - MLAlpacaTrading - INFO - Buying Power: $20,000.00
+2025-12-25 00:05:39,471 - MLAlpacaTrading - INFO - Portfolio Value: $10,000.00
+2025-12-25 00:05:39,732 - MLAlpacaTrading - WARNING - No intraday bars for IBIT today
+2025-12-25 00:06:25,092 - MLAlpacaTrading - INFO - ✅ Successfully connected to Alpaca (ML account)
+2025-12-25 00:06:25,092 - MLAlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-25 00:06:25,092 - MLAlpacaTrading - INFO - Buying Power: $20,000.00
+2025-12-25 00:06:25,092 - MLAlpacaTrading - INFO - Portfolio Value: $10,000.00
+2025-12-25 00:06:25,782 - MLAlpacaTrading - WARNING - No intraday bars for IBIT today
+2025-12-25 00:06:25,830 - MLAlpacaTrading - WARNING - No intraday bars for SPY today
+2025-12-25 00:06:38,834 - MLAlpacaTrading - INFO - ✅ Successfully connected to Alpaca (ML account)
+2025-12-25 00:06:38,835 - MLAlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-25 00:06:38,835 - MLAlpacaTrading - INFO - Buying Power: $20,000.00
+2025-12-25 00:06:38,835 - MLAlpacaTrading - INFO - Portfolio Value: $10,000.00
