@@ -1,0 +1,9 @@
+2025-12-24 23:01:18,154 - AlpacaTrading - INFO - ✅ Successfully connected to Alpaca paper trading
+2025-12-24 23:01:18,154 - AlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-24 23:01:18,154 - AlpacaTrading - INFO - Buying Power: $20,000.00
+2025-12-24 23:01:18,154 - AlpacaTrading - INFO - Portfolio Value: $10,000.00
+2025-12-24 23:01:18,193 - AlpacaTrading - ERROR - Error getting account info: 'Account' object has no attribute 'day_trade_count'
+2025-12-24 23:01:39,226 - AlpacaTrading - INFO - ✅ Successfully connected to Alpaca paper trading
+2025-12-24 23:01:39,226 - AlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-24 23:01:39,226 - AlpacaTrading - INFO - Buying Power: $20,000.00
+2025-12-24 23:01:39,226 - AlpacaTrading - INFO - Portfolio Value: $10,000.00

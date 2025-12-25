@@ -88,8 +88,8 @@ class AlpacaTradingClient:
                 'portfolio_value': float(account.portfolio_value),
                 'cash': float(account.cash),
                 'equity': float(account.equity),
-                'day_trade_count': account.day_trade_count,
-                'pattern_day_trader': account.pattern_day_trader
+                'day_trade_count': getattr(account, 'daytrade_count', 0),
+                'pattern_day_trader': getattr(account, 'pattern_day_trader', False)
             }
         except Exception as e:
             self.logger.error(f"Error getting account info: {str(e)}")
