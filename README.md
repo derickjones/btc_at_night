@@ -1,52 +1,101 @@
-# IBIT Overnight Trading Strategy# IBIT Overnight Trading Strategy# IBIT Overnight Trading Strategy - Live Automated Trading System
+# IBIT Overnight Trading Strategy# IBIT Overnight Trading Strategy# IBIT Overnight Trading Strategy# IBIT Overnight Trading Strategy - Live Automated Trading System
 
 
 
-An automated trading system that exploits the overnight effect in IBIT (iShares Bitcoin Trust ETF). The strategy buys at market close and sells at market open, capturing Bitcoin's tendency to appreciate during overnight hours.
+Automated trading system that captures Bitcoin's overnight effect via IBIT ETF. Buys at market close, sells at market open.
 
 
 
-## 🚀 Live Trading StatusAn automated trading system that exploits the overnight effect in IBIT (iShares Bitcoin Trust ETF). The strategy buys at market close and sells at market open, capturing Bitcoin's tendency to appreciate during overnight hours.A complete algorithmic trading system for IBIT (iShares Bitcoin Trust) overnight strategy. **Currently LIVE and trading automatically** via GitHub Actions cloud infrastructure with 183.8% backtested returns and 1.81 Sharpe ratio.
+## 🟢 Live StatusAn automated trading system that exploits the overnight effect in IBIT (iShares Bitcoin Trust ETF). The strategy buys at market close and sells at market open, capturing Bitcoin's tendency to appreciate during overnight hours.
 
 
+
+Two strategies running on Alpaca Paper Trading via GitHub Actions:
+
+
+
+| Strategy | Logic | Backtest Return | Sharpe |## 🚀 Live Trading StatusAn automated trading system that exploits the overnight effect in IBIT (iShares Bitcoin Trust ETF). The strategy buys at market close and sells at market open, capturing Bitcoin's tendency to appreciate during overnight hours.A complete algorithmic trading system for IBIT (iShares Bitcoin Trust) overnight strategy. **Currently LIVE and trading automatically** via GitHub Actions cloud infrastructure with 183.8% backtested returns and 1.81 Sharpe ratio.
+
+|----------|-------|-----------------|--------|
+
+| **Baseline** (`live_trading/`) | Always buy overnight | 16.7% | 0.92 |
+
+| **ML-Enhanced** (`ml_live_trading/`) | Model decides to buy/skip | **29.7%** | **2.26** |
 
 **🟢 SYSTEM STATUS: OPERATIONAL**
 
+**Schedule** (Mon-Fri):
 
+- 9:40 AM EST → Sell
+
+- 3:50 PM EST → Buy decision
 
 | Strategy | Platform | Account | Status |## 🚀 Live Trading Status## 🤖 Live Trading Status
 
+## 📁 Structure
+
 |----------|----------|---------|--------|
 
-| **Baseline** | Alpaca Paper Trading | Account #1 | 🟢 Live |
+```
 
-| **ML-Enhanced** | Alpaca Paper Trading | Account #2 | 🟢 Live |
+btc_at_night/| **Baseline** | Alpaca Paper Trading | Account #1 | 🟢 Live |
 
-**🟢 SYSTEM STATUS: OPERATIONAL****🟢 SYSTEM STATUS: OPERATIONAL**
+├── live_trading/        # Baseline strategy (always trades)
+
+├── ml_live_trading/     # ML strategy (selective trading)| **ML-Enhanced** | Alpaca Paper Trading | Account #2 | 🟢 Live |
+
+├── ml_testing/          # ML research & backtests
+
+└── backtesting/         # Original strategy analysis**🟢 SYSTEM STATUS: OPERATIONAL****🟢 SYSTEM STATUS: OPERATIONAL**
+
+```
 
 Both strategies run automatically via GitHub Actions:
 
+## 🤖 ML Strategy
+
 - **9:40 AM EST**: Sell signal execution
 
-- **3:50 PM EST**: Buy signal execution
+Uses 40+ features available at 3:50 PM:
 
-- **5:30 PM EST**: Daily email reports (baseline only)| Component | Status |- **Trading Environment**: Alpaca Paper Trading ($20,000 buying power)
+- **Intraday**: Today's gap, return, IBIT vs SPY performance- **3:50 PM EST**: Buy signal execution
 
+- **Prior-day**: Recent overnight returns, volatility, momentum
 
-
-## 📊 Strategy Comparison|-----------|--------|- **Execution Platform**: GitHub Actions (Free cloud hosting)
-
-
-
-### Backtested Performance (Jan 2024 - Dec 2025)| Trading Platform | Alpaca Paper Trading |- **Schedule**: 
+- **Calendar**: Day of week, month effects- **5:30 PM EST**: Daily email reports (baseline only)| Component | Status |- **Trading Environment**: Alpaca Paper Trading ($20,000 buying power)
 
 
 
-| Strategy | Total Return | Sharpe Ratio | Max Drawdown | Win Rate || Execution | GitHub Actions (automated) |  - 9:40 AM EST: Sell signal execution
+Model: Logistic Regression → trades ~50-60% of nights
+
+
+
+## 🔧 Setup## 📊 Strategy Comparison|-----------|--------|- **Execution Platform**: GitHub Actions (Free cloud hosting)
+
+
+
+GitHub Secrets needed:
+
+- `ALPACA_API_KEY` / `ALPACA_SECRET_KEY` (baseline)
+
+- `ML_ALPACA_API_KEY` / `ML_ALPACA_SECRET_KEY` (ML)### Backtested Performance (Jan 2024 - Dec 2025)| Trading Platform | Alpaca Paper Trading |- **Schedule**: 
+
+
+
+## 📊 Monitor
+
+
+
+- [Baseline Actions](https://github.com/derickjones/btc_at_night/actions/workflows/trading.yml)| Strategy | Total Return | Sharpe Ratio | Max Drawdown | Win Rate || Execution | GitHub Actions (automated) |  - 9:40 AM EST: Sell signal execution
+
+- [ML Actions](https://github.com/derickjones/btc_at_night/actions/workflows/ml_trading.yml)
 
 |----------|--------------|--------------|--------------|----------|
 
-| **ML Intraday (LR)** | **29.7%** | **2.26** | -9.5% | ~55% || Buy Signal | 3:50 PM EST (weekdays) |  - 3:50 PM EST: Buy signal execution  
+---
+
+*Paper trading only. Not financial advice.*| **ML Intraday (LR)** | **29.7%** | **2.26** | -9.5% | ~55% || Buy Signal | 3:50 PM EST (weekdays) |  - 3:50 PM EST: Buy signal execution  
+
 
 | ML Intraday (RF) | 24.3% | 1.67 | -10.4% | ~53% |
 
