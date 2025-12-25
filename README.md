@@ -1,184 +1,366 @@
-# IBIT Overnight Trading Strategy# IBIT Overnight Trading Strategy - Live Automated Trading System
+# IBIT Overnight Trading Strategy# IBIT Overnight Trading Strategy# IBIT Overnight Trading Strategy - Live Automated Trading System
 
 
 
-An automated trading system that exploits the overnight effect in IBIT (iShares Bitcoin Trust ETF). The strategy buys at market close and sells at market open, capturing Bitcoin's tendency to appreciate during overnight hours.A complete algorithmic trading system for IBIT (iShares Bitcoin Trust) overnight strategy. **Currently LIVE and trading automatically** via GitHub Actions cloud infrastructure with 183.8% backtested returns and 1.81 Sharpe ratio.
+An automated trading system that exploits the overnight effect in IBIT (iShares Bitcoin Trust ETF). The strategy buys at market close and sells at market open, capturing Bitcoin's tendency to appreciate during overnight hours.
 
 
 
-## 🚀 Live Trading Status## 🤖 Live Trading Status
+## 🚀 Live Trading StatusAn automated trading system that exploits the overnight effect in IBIT (iShares Bitcoin Trust ETF). The strategy buys at market close and sells at market open, capturing Bitcoin's tendency to appreciate during overnight hours.A complete algorithmic trading system for IBIT (iShares Bitcoin Trust) overnight strategy. **Currently LIVE and trading automatically** via GitHub Actions cloud infrastructure with 183.8% backtested returns and 1.81 Sharpe ratio.
 
 
+
+**🟢 SYSTEM STATUS: OPERATIONAL**
+
+
+
+| Strategy | Platform | Account | Status |## 🚀 Live Trading Status## 🤖 Live Trading Status
+
+|----------|----------|---------|--------|
+
+| **Baseline** | Alpaca Paper Trading | Account #1 | 🟢 Live |
+
+| **ML-Enhanced** | Alpaca Paper Trading | Account #2 | 🟢 Live |
 
 **🟢 SYSTEM STATUS: OPERATIONAL****🟢 SYSTEM STATUS: OPERATIONAL**
 
+Both strategies run automatically via GitHub Actions:
+
+- **9:40 AM EST**: Sell signal execution
+
+- **3:50 PM EST**: Buy signal execution
+
+- **5:30 PM EST**: Daily email reports (baseline only)| Component | Status |- **Trading Environment**: Alpaca Paper Trading ($20,000 buying power)
 
 
-| Component | Status |- **Trading Environment**: Alpaca Paper Trading ($20,000 buying power)
 
-|-----------|--------|- **Execution Platform**: GitHub Actions (Free cloud hosting)
+## 📊 Strategy Comparison|-----------|--------|- **Execution Platform**: GitHub Actions (Free cloud hosting)
 
-| Trading Platform | Alpaca Paper Trading |- **Schedule**: 
 
-| Execution | GitHub Actions (automated) |  - 9:40 AM EST: Sell signal execution
 
-| Buy Signal | 3:50 PM EST (weekdays) |  - 3:50 PM EST: Buy signal execution  
+### Backtested Performance (Jan 2024 - Dec 2025)| Trading Platform | Alpaca Paper Trading |- **Schedule**: 
 
-| Sell Signal | 9:40 AM EST (weekdays) |  - 5:30 PM EST: Daily email reports
+
+
+| Strategy | Total Return | Sharpe Ratio | Max Drawdown | Win Rate || Execution | GitHub Actions (automated) |  - 9:40 AM EST: Sell signal execution
+
+|----------|--------------|--------------|--------------|----------|
+
+| **ML Intraday (LR)** | **29.7%** | **2.26** | -9.5% | ~55% || Buy Signal | 3:50 PM EST (weekdays) |  - 3:50 PM EST: Buy signal execution  
+
+| ML Intraday (RF) | 24.3% | 1.67 | -10.4% | ~53% |
+
+| Baseline (Always Night) | 16.7% | 0.92 | -12.1% | ~55% || Sell Signal | 9:40 AM EST (weekdays) |  - 5:30 PM EST: Daily email reports
+
+| Buy & Hold IBIT | -17.1% | -0.85 | -32.7% | - |
 
 | Daily Reports | 5:30 PM EST (email) |- **Email Reports**: Automated daily performance summaries
 
-- **Data Persistence**: Trade history and performance tracking
+### Key Insight
 
-## 📊 Backtested Performance (Jan 2024 - Dec 2025)- **Next Trade**: December 18, 2025 at 3:50 PM EST (first buy)
+The ML strategy with intraday features outperforms the baseline by **~75%** while having **better risk-adjusted returns** (2.26 vs 0.92 Sharpe). Both strategies significantly outperform buy & hold.- **Data Persistence**: Trade history and performance tracking
 
 
 
-| Metric | Night Strategy | Buy & Hold | Day Only |### 🔴 Live Paper Trading Features
+## 🤖 Strategy Versions## 📊 Backtested Performance (Jan 2024 - Dec 2025)- **Next Trade**: December 18, 2025 at 3:50 PM EST (first buy)
+
+
+
+### 1. Baseline Strategy (`live_trading/`)
+
+- **Logic**: Always buy at close, sell at open
+
+- **Features**: None (pure overnight effect)| Metric | Night Strategy | Buy & Hold | Day Only |### 🔴 Live Paper Trading Features
+
+- **Execution**: Every trading day
 
 |--------|---------------|------------|----------|- ✅ **Fully Automated**: No manual intervention required
 
-| **Total Return** | **241.8%** | 88.1% | -44.9% |- ✅ **Cloud Hosted**: Free GitHub Actions execution
+### 2. ML-Enhanced Strategy (`ml_live_trading/`)
 
-| **Annualized Return** | **88.6%** | 38.6% | -26.5% |- ✅ **Risk Management**: Position limits and safety controls
+- **Logic**: ML model decides whether to buy| **Total Return** | **241.8%** | 88.1% | -44.9% |- ✅ **Cloud Hosted**: Free GitHub Actions execution
 
-| **Sharpe Ratio** | **2.16** | 0.66 | -0.94 |- ✅ **Email Reporting**: Daily performance charts and summaries
+- **Features**: 40+ intraday features including:
 
-| **Max Drawdown** | **-20.4%** | -32.7% | -50.4% |- ✅ **Data Tracking**: Persistent trade history and metrics
+  - Today's gap (open vs yesterday's close)| **Annualized Return** | **88.6%** | 38.6% | -26.5% |- ✅ **Risk Management**: Position limits and safety controls
 
-| **Win Rate** | **54.9%** | 49.2% | 48.4% |- ✅ **GitHub Integration**: Automated repository updates
+  - Intraday return (current price vs today's open)
+
+  - IBIT vs SPY relative performance| **Sharpe Ratio** | **2.16** | 0.66 | -0.94 |- ✅ **Email Reporting**: Daily performance charts and summaries
+
+  - Volume patterns
+
+  - Prior overnight returns| **Max Drawdown** | **-20.4%** | -32.7% | -50.4% |- ✅ **Data Tracking**: Persistent trade history and metrics
+
+  - Calendar effects
+
+- **Execution**: Selective (~50-60% of nights)| **Win Rate** | **54.9%** | 49.2% | 48.4% |- ✅ **GitHub Integration**: Automated repository updates
+
+- **Model**: Logistic Regression (best performer)
 
 
+
+## 📁 Project Structure
 
 ### Key Insight## 🚀 Strategy Overview
 
-The night strategy outperforms buy & hold by **~3x** while having **lower drawdowns** and **better risk-adjusted returns**. Day-only trading actually *loses* money, demonstrating that nearly all of Bitcoin's gains occur overnight.
+```
 
-The **IBIT Overnight Trading Strategy** capitalizes on Bitcoin market inefficiencies by:
-
-## 📁 Project Structure- **Buying IBIT at market close** each trading day
-
-- **Selling IBIT at market open** the following day
-
-```- Capturing overnight price movements in Bitcoin-related assets
-
-btc_at_night/- Generating alpha through systematic overnight exposure
+btc_at_night/The night strategy outperforms buy & hold by **~3x** while having **lower drawdowns** and **better risk-adjusted returns**. Day-only trading actually *loses* money, demonstrating that nearly all of Bitcoin's gains occur overnight.
 
 ├── .github/workflows/
 
-│   └── trading.yml              # GitHub Actions automation### 📊 Key Performance Metrics
+│   ├── trading.yml              # Baseline strategy automationThe **IBIT Overnight Trading Strategy** capitalizes on Bitcoin market inefficiencies by:
 
-├── backtesting/- **Total Return**: 183.8% over ~1.92 years
+│   └── ml_trading.yml           # ML strategy automation
 
-│   ├── ibit_strategy_analysis.py   # Backtest analysis script- **Annualized Return**: 72.3%
+│## 📁 Project Structure- **Buying IBIT at market close** each trading day
 
-│   ├── requirements.txt- **Sharpe Ratio**: 1.81 (excellent risk-adjusted returns)
+├── backtesting/                 # Historical analysis
 
-│   └── output/                     # Analysis results- **Win Rate**: 54.7% across 481 trades
+│   ├── ibit_strategy_analysis.py- **Selling IBIT at market open** the following day
 
-│       ├── ibit_strategy_report.pdf   # Full PDF report- **Maximum Drawdown**: -20.4%
+│   └── output/                  # Reports and charts
 
-│       ├── cumulative_performance.png- **Volatility**: 38.8% (annualized)
+│```- Capturing overnight price movements in Bitcoin-related assets
 
-│       ├── monthly_returns.png
+├── live_trading/                # 🟢 BASELINE STRATEGY (LIVE)
 
-│       ├── monthly_cumulative.png## 🏗️ Project Structure
+│   ├── strategy.py              # Trading logicbtc_at_night/- Generating alpha through systematic overnight exposure
 
-│       ├── drawdowns.png
+│   ├── github_trading.py        # GitHub Actions adapter
 
-│       └── return_distribution.png```
+│   ├── alpaca_client.py         # Alpaca API client├── .github/workflows/
 
-├── live_trading/├── .github/workflows/
+│   ├── daily_email_report.py    # Email reports
 
-│   ├── strategy.py              # Trading strategy logic│   └── trading.yml           # 🤖 Live trading automation (ACTIVE)
+│   ├── config.py                # Configuration│   └── trading.yml              # GitHub Actions automation### 📊 Key Performance Metrics
 
-│   ├── github_trading.py        # GitHub Actions adapterbacktesting/                  # Historical analysis system
+│   ├── logs/                    # Trading logs
+
+│   └── results/                 # Trade history├── backtesting/- **Total Return**: 183.8% over ~1.92 years
+
+│
+
+├── ml_live_trading/             # 🟢 ML STRATEGY (LIVE)│   ├── ibit_strategy_analysis.py   # Backtest analysis script- **Annualized Return**: 72.3%
+
+│   ├── ml_strategy.py           # ML model + trading logic
+
+│   ├── github_trading.py        # GitHub Actions adapter│   ├── requirements.txt- **Sharpe Ratio**: 1.81 (excellent risk-adjusted returns)
+
+│   ├── alpaca_client.py         # Alpaca API client (IEX feed)
+
+│   ├── config.py                # Configuration│   └── output/                     # Analysis results- **Win Rate**: 54.7% across 481 trades
+
+│   ├── models/                  # Trained ML models
+
+│   ├── logs/                    # Trading logs│       ├── ibit_strategy_report.pdf   # Full PDF report- **Maximum Drawdown**: -20.4%
+
+│   └── results/                 # Trade history + predictions
+
+││       ├── cumulative_performance.png- **Volatility**: 38.8% (annualized)
+
+├── ml_testing/                  # ML model development
+
+│   ├── ml_strategy_analysis.py  # Baseline ML (EOD features)│       ├── monthly_returns.png
+
+│   ├── ml_strategy_tradeable.py # Prior-day features only
+
+│   ├── ml_strategy_intraday.py  # Intraday features (deployed)│       ├── monthly_cumulative.png## 🏗️ Project Structure
+
+│   ├── output/                  # Baseline ML results
+
+│   ├── output_tradeable/        # Tradeable model results│       ├── drawdowns.png
+
+│   └── output_intraday/         # Intraday model results
+
+││       └── return_distribution.png```
+
+└── README.md
+
+```├── live_trading/├── .github/workflows/
+
+
+
+## 🔧 Setup│   ├── strategy.py              # Trading strategy logic│   └── trading.yml           # 🤖 Live trading automation (ACTIVE)
+
+
+
+### For Baseline Strategy (already configured)│   ├── github_trading.py        # GitHub Actions adapterbacktesting/                  # Historical analysis system
+
+The baseline strategy is already running with your original Alpaca account.
 
 │   ├── alpaca_client.py         # Alpaca API client├── main.py                   # Main entry point for backtesting
 
-│   ├── monitor.py               # Performance monitoring├── core/                     # Core trading logic and utilities
+### For ML Strategy
 
-│   ├── daily_email_report.py    # Email reports│   ├── data_fetcher.py      # IBIT data retrieval and management
+1. **GitHub Secrets** (already added):│   ├── monitor.py               # Performance monitoring├── core/                     # Core trading logic and utilities
 
-│   ├── config.py                # Configuration│   ├── strategy.py          # Backtesting strategy implementation
+   - `ML_ALPACA_API_KEY`
 
-│   ├── test_trade.py            # Manual testing script│   ├── backtester.py        # Backtesting engine
-
-│   ├── requirements.txt│   └── config.py            # Configuration and constants
-
-│   ├── logs/                    # Trading logs├── analysis/                 # Analysis and reporting tools
-
-│   └── results/                 # Trade history├── monitoring/              # Performance monitoring system
-
-└── README.md├── data/                    # Raw historical data
-
-```├── results/                 # Analysis results and reports
-
-│   └── IBIT_Strategy_Complete_Analysis.pdf # Comprehensive report
-
-## 🔧 Setup└── docs/                    # Documentation
+   - `ML_ALPACA_SECRET_KEY`│   ├── daily_email_report.py    # Email reports│   ├── data_fetcher.py      # IBIT data retrieval and management
 
 
 
-### 1. Clone Repositorylive_trading/                 # 🟢 LIVE TRADING SYSTEM (OPERATIONAL)
-
-```bash├── strategy.py              # 🤖 Live trading strategy (ACTIVE)
-
-git clone https://github.com/derickjones/btc_at_night.git├── github_trading.py        # GitHub Actions adapter
-
-cd btc_at_night├── alpaca_client.py         # Alpaca API integration
-
-```├── daily_email_report.py    # 📧 Email reporting system
-
-├── monitor.py               # Performance monitoring
-
-### 2. Create Virtual Environment├── config.py                # Live trading configuration  
-
-```bash├── setup.py                 # System validation
-
-python -m venv .venv├── data/                    # Live trading data
-
-source .venv/bin/activate  # macOS/Linux├── logs/                    # 📝 Trading activity logs
-
-# or: .venv\Scripts\activate  # Windows└── results/                 # 📊 Live trading performance data
-
-``````
+2. **Workflow**: `.github/workflows/ml_trading.yml` is active│   ├── config.py                # Configuration│   ├── strategy.py          # Backtesting strategy implementation
 
 
 
-### 3. Install Dependencies## � Live Trading Quick Start
+### Local Development│   ├── test_trade.py            # Manual testing script│   ├── backtester.py        # Backtesting engine
 
 ```bash
 
-pip install -r live_trading/requirements.txt### System is Already Running! 🎉
+# Clone repository│   ├── requirements.txt│   └── config.py            # Configuration and constants
 
-pip install -r backtesting/requirements.txtThe strategy is **automatically trading** via GitHub Actions. No setup required!
+git clone https://github.com/derickjones/btc_at_night.git
+
+cd btc_at_night│   ├── logs/                    # Trading logs├── analysis/                 # Analysis and reporting tools
+
+
+
+# Create virtual environment│   └── results/                 # Trade history├── monitoring/              # Performance monitoring system
+
+python -m venv .venv
+
+source .venv/bin/activate└── README.md├── data/                    # Raw historical data
+
+
+
+# Install dependencies```├── results/                 # Analysis results and reports
+
+pip install -r live_trading/requirements.txt
+
+pip install -r ml_live_trading/requirements.txt│   └── IBIT_Strategy_Complete_Analysis.pdf # Comprehensive report
+
+
+
+# Test ML strategy locally## 🔧 Setup└── docs/                    # Documentation
+
+cd ml_live_trading
+
+python ml_strategy.py
 
 ```
 
-- **View Live Status**: Check the [GitHub Actions page](https://github.com/derickjones/btc_at_night/actions)
+### 1. Clone Repositorylive_trading/                 # 🟢 LIVE TRADING SYSTEM (OPERATIONAL)
 
-### 4. Configure Alpaca API- **Monitor Performance**: Daily email reports sent to configured address
+## 📈 ML Model Features
+
+```bash├── strategy.py              # 🤖 Live trading strategy (ACTIVE)
+
+The ML strategy uses features available at 3:50 PM EST:
+
+git clone https://github.com/derickjones/btc_at_night.git├── github_trading.py        # GitHub Actions adapter
+
+### Same-Day Intraday Features
+
+| Feature | Description |cd btc_at_night├── alpaca_client.py         # Alpaca API integration
+
+|---------|-------------|
+
+| `today_gap` | Gap from yesterday's close to today's open |```├── daily_email_report.py    # 📧 Email reporting system
+
+| `intraday_return` | Return from today's open to current price |
+
+| `intraday_vs_spy` | IBIT performance relative to SPY today |├── monitor.py               # Performance monitoring
+
+| `intraday_range` | Today's high-low range (volatility) |
+
+| `intraday_position` | Where current price is in today's range |### 2. Create Virtual Environment├── config.py                # Live trading configuration  
+
+| `today_volume_vs_ma` | Today's volume vs recent average |
+
+```bash├── setup.py                 # System validation
+
+### Prior-Day Features
+
+| Feature | Description |python -m venv .venv├── data/                    # Live trading data
+
+|---------|-------------|
+
+| `prev_overnight_*` | Recent overnight returns (1, 2, 3, 5-day avg) |source .venv/bin/activate  # macOS/Linux├── logs/                    # 📝 Trading activity logs
+
+| `prior_*d_return` | Returns over past 1/5/10/20 days |
+
+| `ibit_vs_spy_*` | IBIT relative strength vs SPY |# or: .venv\Scripts\activate  # Windows└── results/                 # 📊 Live trading performance data
+
+| `prior_volatility_*` | Recent volatility measures |
+
+``````
+
+### Calendar Features
+
+- Day of week, month, quarter
+
+- Month start/end indicators
+
+- Monday/Friday effects### 3. Install Dependencies## � Live Trading Quick Start
+
+
+
+## 📊 Monitoring```bash
+
+
+
+### GitHub Actionspip install -r live_trading/requirements.txt### System is Already Running! 🎉
+
+- **Baseline**: https://github.com/derickjones/btc_at_night/actions/workflows/trading.yml
+
+- **ML**: https://github.com/derickjones/btc_at_night/actions/workflows/ml_trading.ymlpip install -r backtesting/requirements.txtThe strategy is **automatically trading** via GitHub Actions. No setup required!
+
+
+
+### Trade History```
+
+- Baseline: `live_trading/results/live_trades.json`
+
+- ML: `ml_live_trading/results/ml_live_trades.json`- **View Live Status**: Check the [GitHub Actions page](https://github.com/derickjones/btc_at_night/actions)
+
+
+
+### ML Predictions### 4. Configure Alpaca API- **Monitor Performance**: Daily email reports sent to configured address
+
+- All predictions (buy & skip): `ml_live_trading/results/ml_predictions.json`
 
 Edit `live_trading/config.py` with your Alpaca paper trading credentials:- **Trade History**: Automatically updated in `live_trading/results/`
 
+## 🔬 Research & Analysis
+
 ```python
+
+The `ml_testing/` folder contains the research that led to the ML strategy:
 
 ALPACA_API_KEY = 'your_api_key'### 📧 Email Report Schedule
 
+1. **Baseline ML** (`ml_strategy_analysis.py`): Used end-of-day features (not tradeable - data unavailable at decision time)
+
 ALPACA_SECRET_KEY = 'your_secret_key'- **5:30 PM EST Daily**: Performance summary, charts, trade details
+
+2. **Tradeable Model** (`ml_strategy_tradeable.py`): Prior-day features only - 21.9% return, 1.44 Sharpe
 
 ```- **First Report**: December 18, 2025 (after first trade execution)
 
+3. **Intraday Model** (`ml_strategy_intraday.py`): Same-day features available at 3:50 PM - **29.7% return, 2.26 Sharpe** ✅
 
+
+
+Each folder contains PDF reports with SHAP analysis showing feature importance.
 
 ### 5. Configure GitHub Secrets (for automated trading)### 🔧 Local Development Setup (Optional)
 
+## 📝 License
+
 Add these secrets to your GitHub repository:
+
+MIT License - Feel free to use and modify.
 
 - `ALPACA_API_KEY````bash
 
+## ⚠️ Disclaimer
+
 - `ALPACA_SECRET_KEY`# Clone the repository
+
+This is for educational and paper trading purposes. Past performance does not guarantee future results. Always do your own research before trading with real money.
 
 - `EMAIL_APP_PASSWORD` (Gmail app password for reports)git clone https://github.com/derickjones/btc_at_night.git
 
