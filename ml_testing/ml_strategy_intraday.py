@@ -54,21 +54,73 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
 def fetch_data():
-    """Fetch IBIT and SPY historical data."""
+    """Fetch IBIT and SPY historical data with minute-level data for 3:50 PM prices."""
     print("📊 Fetching IBIT and SPY data...")
-    
+
     start_date = "2024-01-11"
     end_date = datetime.now().strftime("%Y-%m-%d")
-    
+
     ibit = yf.Ticker("IBIT")
     spy = yf.Ticker("SPY")
-    
+
+    # Get daily data for returns calculation
     ibit_df = ibit.history(start=start_date, end=end_date)
     spy_df = spy.history(start=start_date, end=end_date)
-    
+
     print(f"   IBIT: {len(ibit_df)} trading days")
     print(f"   SPY: {len(spy_df)} trading days")
-    
+
+    # Get minute-level data to extract 3:50 PM prices
+    print("📊 Fetching minute-level data for 3:50 PM prices...")
+
+    # For each trading day, get minute data and extract 3:50 PM price
+    ibit_3_50_prices = {}
+    spy_3_50_prices = {}
+
+    for date in ibit_df.index:
+        date_str = date.strftime("%Y-%m-%d")
+
+        try:
+            # Get minute data for this specific day
+            day_start = date.strftime("%Y-%m-%d")
+            day_end = (date + timedelta(days=1)).strftime("%Y-%m-%d")
+
+            ibit_minute = ibit.history(start=day_start, end=day_end, interval="1m")
+            spy_minute = spy.history(start=day_start, end=day_end, interval="1m")
+
+            # Find 3:50 PM price (15:50:00)
+            # Market closes at 16:00, so 3:50 PM is 15:50
+            target_time = pd.Timestamp(f"{date_str} 15:50:00")
+
+            # Get the price closest to 3:50 PM (within the last hour of trading)
+            ibit_afternoon = ibit_minute[ibit_minute.index.time >= pd.Timestamp("14:00:00").time()]
+            spy_afternoon = spy_minute[spy_minute.index.time >= pd.Timestamp("14:00:00").time()]
+
+            if not ibit_afternoon.empty:
+                # Get the last price before/at 3:50 PM
+                ibit_3_50_prices[date] = ibit_afternoon['Close'].iloc[-1]  # Last price in afternoon
+            else:
+                # Fallback to close if no afternoon data
+                ibit_3_50_prices[date] = ibit_df.loc[date, 'Close']
+
+            if not spy_afternoon.empty:
+                spy_3_50_prices[date] = spy_afternoon['Close'].iloc[-1]  # Last price in afternoon
+            else:
+                # Fallback to close if no afternoon data
+                spy_3_50_prices[date] = spy_df.loc[date, 'Close']
+
+        except Exception as e:
+            print(f"   Warning: Could not get minute data for {date_str}: {e}")
+            # Fallback to close price
+            ibit_3_50_prices[date] = ibit_df.loc[date, 'Close']
+            spy_3_50_prices[date] = spy_df.loc[date, 'Close']
+
+    # Add 3:50 PM prices to the dataframes
+    ibit_df['ibit_3_50_price'] = pd.Series(ibit_3_50_prices)
+    spy_df['spy_3_50_price'] = pd.Series(spy_3_50_prices)
+
+    print(f"   Extracted 3:50 PM prices for {len(ibit_3_50_prices)} days")
+
     return ibit_df, spy_df
 
 
@@ -78,13 +130,13 @@ def create_features(ibit_df, spy_df):
     
     INCLUDES same-day intraday data:
     - Today's open (available at 9:30 AM)
-    - Simulated 3:50 PM price (we'll use close as proxy in backtest)
+    - Actual 3:50 PM price (fetched from minute-level data)
     - Today's high/low up to 3:50 PM
     - Today's volume up to 3:50 PM
     
-    Note: In backtest, we use daily close as proxy for 3:50 PM price.
-    This is reasonable since 3:50 PM is very close to 4:00 PM close.
-    In live trading, you'd use the actual 3:50 PM price.
+    Note: We now use actual 3:50 PM prices from minute-level data,
+    not the daily close as proxy. This provides realistic feature values
+    that would be available at decision time.
     """
     print("🔧 Engineering INTRADAY features (available at 3:50 PM)...")
     
@@ -104,6 +156,7 @@ def create_features(ibit_df, spy_df):
     df['spy_low'] = spy_aligned['Low']
     df['spy_close'] = spy_aligned['Close']
     df['spy_volume'] = spy_aligned['Volume']
+    df['spy_3_50_price'] = spy_aligned['spy_3_50_price']
     
     # Calculate overnight returns (target variable)
     df['overnight_return'] = (df['ibit_open'].shift(-1) - df['ibit_close']) / df['ibit_close']
@@ -127,9 +180,9 @@ def create_features(ibit_df, spy_df):
     df['spy_today_gap'] = (df['spy_open'] - df['spy_close'].shift(1)) / df['spy_close'].shift(1)
     df['gap_vs_spy'] = df['today_gap'] - df['spy_today_gap']
     
-    # Intraday return: How has today gone so far? (using close as proxy for 3:50 PM)
-    df['intraday_return'] = (df['ibit_close'] - df['ibit_open']) / df['ibit_open']
-    df['spy_intraday_return'] = (df['spy_close'] - df['spy_open']) / df['spy_open']
+    # Intraday return: How has today gone so far? (using actual 3:50 PM price)
+    df['intraday_return'] = (df['ibit_3_50_price'] - df['ibit_open']) / df['ibit_open']
+    df['spy_intraday_return'] = (df['spy_3_50_price'] - df['spy_open']) / df['spy_open']
     df['intraday_vs_spy'] = df['intraday_return'] - df['spy_intraday_return']
     
     # Intraday range: Today's volatility
@@ -137,7 +190,7 @@ def create_features(ibit_df, spy_df):
     df['spy_intraday_range'] = (df['spy_high'] - df['spy_low']) / df['spy_open']
     
     # Where in today's range is current price? (0 = at low, 1 = at high)
-    df['intraday_position'] = (df['ibit_close'] - df['ibit_low']) / (df['ibit_high'] - df['ibit_low'])
+    df['intraday_position'] = (df['ibit_3_50_price'] - df['ibit_low']) / (df['ibit_high'] - df['ibit_low'])
     df['intraday_position'] = df['intraday_position'].fillna(0.5)
     
     # Today's volume (in backtest, using full day; in live, would use volume up to 3:50 PM)
