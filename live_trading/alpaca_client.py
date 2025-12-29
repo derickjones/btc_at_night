@@ -158,7 +158,7 @@ class AlpacaTradingClient:
                 qty=qty,
                 side=side,
                 type='market',
-                time_in_force='DAY'
+                time_in_force='day'
             )
             
             self.logger.info(f"📋 Order placed: {side.upper()} {qty} shares of {SYMBOL}")

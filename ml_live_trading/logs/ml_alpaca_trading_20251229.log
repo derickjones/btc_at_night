@@ -1,0 +1,37 @@
+2025-12-29 14:50:49,654 - MLAlpacaTrading - INFO - ✅ Successfully connected to Alpaca (ML account)
+2025-12-29 14:50:49,654 - MLAlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-29 14:50:49,655 - MLAlpacaTrading - INFO - Buying Power: $20,000.00
+2025-12-29 14:50:49,655 - MLAlpacaTrading - INFO - Portfolio Value: $10,000.00
+2025-12-29 14:52:03,345 - MLAlpacaTrading - INFO - ✅ Successfully connected to Alpaca (ML account)
+2025-12-29 14:52:03,346 - MLAlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-29 14:52:03,346 - MLAlpacaTrading - INFO - Buying Power: $20,000.00
+2025-12-29 14:52:03,346 - MLAlpacaTrading - INFO - Portfolio Value: $10,000.00
+2025-12-29 14:52:03,426 - MLAlpacaTrading - ERROR - ❌ Error placing buy order: invalid time_in_force
+2025-12-29 14:52:34,156 - MLAlpacaTrading - INFO - ✅ Successfully connected to Alpaca (ML account)
+2025-12-29 14:52:34,156 - MLAlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-29 14:52:34,156 - MLAlpacaTrading - INFO - Buying Power: $19,901.38
+2025-12-29 14:52:34,156 - MLAlpacaTrading - INFO - Portfolio Value: $10,000.02
+2025-12-29 14:52:48,534 - MLAlpacaTrading - INFO - ✅ Successfully connected to Alpaca (ML account)
+2025-12-29 14:52:48,534 - MLAlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-29 14:52:48,534 - MLAlpacaTrading - INFO - Buying Power: $19,901.35
+2025-12-29 14:52:48,534 - MLAlpacaTrading - INFO - Portfolio Value: $9,999.99
+2025-12-29 14:52:48,616 - MLAlpacaTrading - ERROR - ❌ Error placing sell order: invalid time_in_force
+2025-12-29 14:54:13,003 - MLAlpacaTrading - INFO - ✅ Successfully connected to Alpaca (ML account)
+2025-12-29 14:54:13,004 - MLAlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-29 14:54:13,005 - MLAlpacaTrading - INFO - Buying Power: $19,901.41
+2025-12-29 14:54:13,005 - MLAlpacaTrading - INFO - Portfolio Value: $10,000.05
+2025-12-29 14:54:13,090 - MLAlpacaTrading - INFO - 📋 Order placed: SELL 2 shares of IBIT
+2025-12-29 14:54:13,090 - MLAlpacaTrading - INFO - Order ID: 71e3a10b-7114-44c5-8d9b-66924977e04e
+2025-12-29 14:54:18,180 - MLAlpacaTrading - INFO - ✅ Order 71e3a10b-7114-44c5-8d9b-66924977e04e filled at $49.34
+2025-12-29 14:54:24,803 - MLAlpacaTrading - INFO - ✅ Successfully connected to Alpaca (ML account)
+2025-12-29 14:54:24,803 - MLAlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-29 14:54:24,803 - MLAlpacaTrading - INFO - Buying Power: $20,000.08
+2025-12-29 14:54:24,803 - MLAlpacaTrading - INFO - Portfolio Value: $10,000.04
+2025-12-29 14:54:31,576 - MLAlpacaTrading - INFO - ✅ Successfully connected to Alpaca (ML account)
+2025-12-29 14:54:31,576 - MLAlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-29 14:54:31,576 - MLAlpacaTrading - INFO - Buying Power: $20,000.08
+2025-12-29 14:54:31,576 - MLAlpacaTrading - INFO - Portfolio Value: $10,000.04
+2025-12-29 14:54:40,901 - MLAlpacaTrading - INFO - ✅ Successfully connected to Alpaca (ML account)
+2025-12-29 14:54:40,901 - MLAlpacaTrading - INFO - Account Status: ACTIVE
+2025-12-29 14:54:40,901 - MLAlpacaTrading - INFO - Buying Power: $20,000.08
+2025-12-29 14:54:40,901 - MLAlpacaTrading - INFO - Portfolio Value: $10,000.04
