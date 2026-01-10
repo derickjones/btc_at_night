@@ -2,8 +2,8 @@ name: IBIT Overnight Trading Strategy
 
 on:
   schedule:
-    # 9:40 AM EST = 14:40 UTC (sell signals) 
-    - cron: '40 14 * * 1-5'
+    # 9:31 AM EST = 14:31 UTC (sell signals - just after market open) 
+    - cron: '31 14 * * 1-5'
     # 3:50 PM EST = 20:50 UTC (buy signals)
     - cron: '50 20 * * 1-5' 
     # 5:30 PM EST = 22:30 UTC (daily reports)

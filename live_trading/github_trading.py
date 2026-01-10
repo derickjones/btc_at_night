@@ -44,10 +44,10 @@ def should_buy_now():
 def should_sell_now():
     """Check if we should execute sell signal now."""
     now = get_est_now()
-    # Check if it's a weekday and around 9:40 AM EST  
+    # Check if it's a weekday and around 9:31 AM EST (just after market open)
     if now.weekday() < 5:  # Monday = 0, Friday = 4
         current_time = now.time()
-        sell_time = time(9, 40)  # 9:40 AM EST
+        sell_time = time(9, 31)  # 9:31 AM EST - just after market open
         # Allow 30 minute window around sell time
         return abs((datetime.combine(now.date(), current_time) - 
                    datetime.combine(now.date(), sell_time)).total_seconds()) < 1800
