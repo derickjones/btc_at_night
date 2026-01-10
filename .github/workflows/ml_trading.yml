@@ -4,8 +4,8 @@ on:
   schedule:
     # Buy signal: 3:50 PM EST = 20:50 UTC
     - cron: '50 20 * * 1-5'
-    # Sell signal: 9:40 AM EST = 14:40 UTC  
-    - cron: '40 14 * * 1-5'
+    # Sell signal: 9:31 AM EST = 14:31 UTC (just after market open)
+    - cron: '31 14 * * 1-5'
   workflow_dispatch:  # Allow manual trigger for testing
 
 jobs:

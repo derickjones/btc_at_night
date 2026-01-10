@@ -78,7 +78,7 @@ def main():
         else:
             print("⏰ No trading action scheduled for current time")
             print(f"   should_buy_now(): {should_buy_now()} (target: 15:50 EST)")
-            print(f"   should_sell_now(): {should_sell_now()} (target: 09:40 EST)")
+            print(f"   should_sell_now(): {should_sell_now()} (target: 09:31 EST)")
             
             # Always update performance metrics
             strategy._update_performance_metrics()

@@ -26,7 +26,7 @@ Two strategies running on Alpaca Paper Trading via GitHub Actions:
 
 **Schedule** (Mon-Fri):
 
-- 9:40 AM EST → Sell
+- 9:31 AM EST → Sell
 
 - 3:50 PM EST → Buy decision
 
@@ -54,7 +54,7 @@ Both strategies run automatically via GitHub Actions:
 
 ## 🤖 ML Strategy
 
-- **9:40 AM EST**: Sell signal execution
+- **9:31 AM EST**: Sell signal execution
 
 Uses 40+ features available at 3:50 PM:
 
@@ -86,7 +86,7 @@ GitHub Secrets needed:
 
 
 
-- [Baseline Actions](https://github.com/derickjones/btc_at_night/actions/workflows/trading.yml)| Strategy | Total Return | Sharpe Ratio | Max Drawdown | Win Rate || Execution | GitHub Actions (automated) |  - 9:40 AM EST: Sell signal execution
+- [Baseline Actions](https://github.com/derickjones/btc_at_night/actions/workflows/trading.yml)| Strategy | Total Return | Sharpe Ratio | Max Drawdown | Win Rate || Execution | GitHub Actions (automated) |  - 9:31 AM EST: Sell signal execution
 
 - [ML Actions](https://github.com/derickjones/btc_at_night/actions/workflows/ml_trading.yml)
 
@@ -99,7 +99,7 @@ GitHub Secrets needed:
 
 | ML Intraday (RF) | 24.3% | 1.67 | -10.4% | ~53% |
 
-| Baseline (Always Night) | 16.7% | 0.92 | -12.1% | ~55% || Sell Signal | 9:40 AM EST (weekdays) |  - 5:30 PM EST: Daily email reports
+| Baseline (Always Night) | 16.7% | 0.92 | -12.1% | ~55% || Sell Signal | 9:31 AM EST (weekdays) |  - 5:30 PM EST: Daily email reports
 
 | Buy & Hold IBIT | -17.1% | -0.85 | -32.7% | - |
 
@@ -481,7 +481,7 @@ The workflow runs automatically on weekdays:
 
 |------------|--------|
 
-| 9:40 AM | Execute sell signal (close overnight position) |# Show help
+| 9:31 AM | Execute sell signal (close overnight position) |# Show help
 
 | 3:50 PM | Execute buy signal (open overnight position) |python main.py --help
 
@@ -529,7 +529,7 @@ EMAIL_APP_PASSWORD = 'your_gmail_app_password'## 🤖 Live Trading Architecture
 
 This project is for **educational purposes only**. schedule:
 
-  - cron: '40 14 * * 1-5'  # 9:40 AM EST (Sell)
+  - cron: '31 14 * * 1-5'  # 9:31 AM EST (Sell)
 
 - Past performance does not guarantee future results  - cron: '50 20 * * 1-5'  # 3:50 PM EST (Buy)  
 
@@ -541,7 +541,7 @@ This project is for **educational purposes only**. schedule:
 
 ### Trading Flow
 
-## 📄 License1. **Market Open (9:40 AM)**: Sell overnight position
+## 📄 License1. **Market Open (9:31 AM)**: Sell overnight position
 
 2. **Market Close (3:50 PM)**: Buy new position for overnight hold
 

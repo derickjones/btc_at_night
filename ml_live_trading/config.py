@@ -47,8 +47,8 @@ ML_MODEL_TYPE = 'logistic_regression'  # Best performer in backtest
 # =============================================================================
 MARKET_CLOSE_HOUR = 15  # 3:50 PM ET - buy 10 minutes before close
 MARKET_CLOSE_MINUTE = 50
-MARKET_OPEN_HOUR = 9   # 9:40 AM ET - sell 10 minutes after open
-MARKET_OPEN_MINUTE = 40
+MARKET_OPEN_HOUR = 9   # 9:31 AM ET - sell just after market open
+MARKET_OPEN_MINUTE = 31
 
 # =============================================================================
 # LOGGING AND MONITORING

@@ -62,7 +62,7 @@ ML_MODEL_TYPE = 'logistic_regression'  # Best performer
 # Trading Schedule (EST)
 MARKET_CLOSE_HOUR = 15   # 3:50 PM - buy decision
 MARKET_CLOSE_MINUTE = 50
-MARKET_OPEN_HOUR = 9     # 9:40 AM - sell
+MARKET_OPEN_HOUR = 9     # 9:31 AM - sell
 MARKET_OPEN_MINUTE = 40
 ```
 
@@ -103,7 +103,7 @@ on:
   schedule:
     # Buy signal: 3:50 PM EST (20:50 UTC)
     - cron: '50 20 * * 1-5'
-    # Sell signal: 9:40 AM EST (14:40 UTC)
+    # Sell signal: 9:31 AM EST (14:31 UTC)
     - cron: '40 14 * * 1-5'
   workflow_dispatch:
 
